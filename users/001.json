@@ -1,0 +1,11 @@
+[
+    {
+        "category": "a",
+        "currency": "b",
+        "amount": 4,
+        "date-declare": "2019-05-12",
+        "date-invoice":"2019-05-12", 
+        "location": "x, y", 
+        "attachments": ["image1", "image2", "..."]
+    }
+]
