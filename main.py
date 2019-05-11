@@ -13,7 +13,7 @@ def jsonexample():
 @app.route('/newsubmit', methods = ['POST'])
 def api_message():
     if request.headers['Content-Type'] == 'application/json':
-        new_message = json.loads(request.json)
+        new_message = request.json
         allsubmissions.append(new_message)
         # Classify
 
