@@ -33,8 +33,8 @@ def api_message():
         # Prep 
         cat = new_message['category']
         curr = new_message['currency']
-        decl_date = datetime(new_message['date_declare'])
-        inv_date = datetime(new_message['date_invoice'])
+        decl_date  = datetime.strptime(new_message['date-declare'], '%Y-%m-%d')
+        inv_date = datetime.strptime(new_message['date-invoice'], '%Y-%m-%d')
         diff_date = (decl_date - inv_date).days
         amount = new_message['amount']
         foreign_amount = amount*c.get_rate(curr, 'EUR', decl_date)
