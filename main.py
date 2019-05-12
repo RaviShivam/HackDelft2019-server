@@ -1,12 +1,14 @@
 from flask import Flask, request, json #import main Flask class and request object
 from forex_python.converter import CurrencyRates
+from flask_cors import CORS
 from datetime import datetime
 import numpy as np
 import joblib
 
 
 app = Flask(__name__) #create the Flask app
-fname = 'users/002.json'
+CORS(app)
+fname = 'users/001.json'
 fread = open(fname).read()
 if not fread:
     allsubmissions = []
@@ -32,29 +34,36 @@ def api_message():
         new_message = request.json
         # Prep 
         cat = new_message['category']
-        curr = new_message['currency']
-        decl_date  = datetime.strptime(new_message['date-declare'], '%Y-%m-%d')
-        inv_date = datetime.strptime(new_message['date-invoice'], '%Y-%m-%d')
-        diff_date = (decl_date - inv_date).days
-        amount = new_message['amount']
-        foreign_amount = amount*c.get_rate(curr, 'EUR', decl_date)
+        decl_date  = datetime.now()
+        new_message['date-declare'] = decl_date.strftime('%Y-%m-%d')
+        if cat != 'Travelcosts':
+            curr = new_message['currency']
+            decl_date = datetime.strptime(new_message['date-declare'], '%Y-%m-%d')
+            inv_date = datetime.strptime(new_message['date-invoice'], '%Y-%m-%d')
+            diff_date = (decl_date - inv_date).days
+            famount = new_message['amount']
+            amount = famount*c.get_rate(curr, 'EUR', inv_date)
+            new_message['foreign_amount'] = famount
+            new_message['amount'] = amount 
 
-        # Feature construction
-        feats = np.zeros(3)
-        feats[0] = amount
-        feats[1] = foreign_amount
-        feats[2] = diff_date
-        ohe_currency = np.zeros(len(currencyi))
-        ohe_category = np.zeros(len(categoryi))
-        curri = currencyi[curr] if curr in currencyi else currencyi['Other']
-        cati = categoryi[cat] if cat in categoryi else categoryi['Other']
-        ohe_currency[curri] = 1 
-        ohe_category[cati] = 1
-        feats = np.concatenate((feats, ohe_currency, ohe_category))
+            # Feature construction
+            feats = np.zeros(3)
+            feats[0] = amount
+            feats[1] = foreign_amount
+            feats[2] = diff_date
+            ohe_currency = np.zeros(len(currencyi))
+            ohe_category = np.zeros(len(categoryi))
+            curri = currencyi[curr] if curr in currencyi else currencyi['Other']
+            cati = categoryi[cat] if cat in categoryi else categoryi['Other']
+            ohe_currency[curri] = 1 
+            ohe_category[cati] = 1
+            feats = np.concatenate((feats, ohe_currency, ohe_category))
+            feats = feats.reshape(1,-1)
 
-        # Features 
-        auto_approve = bool(xgb1.predict(feats)[0])
-
+            # Features 
+            auto_approve = bool(xgb1.predict(feats)[0])
+        else:
+            auto_approve = False 
         new_message["declaration-id"] = keys
         new_message["status"] = 'approved' if auto_approve else 'pending'
         new_message["status-descripion"] = 'none'

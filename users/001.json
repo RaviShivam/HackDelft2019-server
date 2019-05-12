@@ -1,12 +1,8 @@
 [
-    {
-        "category": "a",
-        "currency": "b",
-        "amount": 4,
-        "date-declare": "2019-05-12",
-        "date-invoice":"2019-05-12", 
-        "location": "x, y", 
-        "attachments": ["image1", "image2", "..."]
-    },
-    {"category": "a", "currency": "b", "amount": 4, "date-declare": "2019-05-12", "date-invoice":"2019-05-12", "location": "x, y", "attachments": ["image1", "image2", "..."]}
+	{"amount": 33.85, "category": "VOG", "currency": "EUR", "date-declare": "2019-02-12", "date-invoice": "2019-01-02", "declaration-id": 0, "status": "approved", "status-descripion": "none"}, 
+	{"amount": 5.36, "category": "Parking", "currency": "EUR", "date-declare": "2019-05-12", "date-invoice": "2019-04-12", "declaration-id": 1, "status": "pending", "status-descripion": "none"}, 
+	{"amount": 30.33, "category": "Travelcosts", "currency": "EUR", "date-declare": "2019-05-12", "date-invoice": "2018-04-12", "declaration-id": 2, "status": "rejected", "status-descripion": "Invoice far overdue"},
+       	{"amount": 4.84, "category": "Parking", "currency": "USD", "date-declare": "2019-05-12", "date-invoice": "2019-03-18", "declaration-id": 3, "status": "approved", "status-descripion": "none"},
+	{"amount": 25.2, "category": "Travelcosts", "currency": "USD", "date-declare": "2019-05-12", "date-invoice": "2018-03-18", "declaration-id": 4, "status": "approved", "status-descripion": "none"},
+	{"amount": 405.25, "category": "Hotel", "currency": "USD", "date-declare": "2019-05-12", "date-invoice": "2019-03-19", "declaration-id": 5, "status": "pending", "status-descripion": "none"} 
 ]
