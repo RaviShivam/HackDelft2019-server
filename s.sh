@@ -1,1 +1,1 @@
-curl --request POST --data '{"category": "a", "currency": "b", "amount": 4, "date-declare": "2019-05-12", "date-invoice":"2019-05-12", "location": "x, y", "attachments": ["image1", "image2", "..."]}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
+curl --request POST --data '{"category": "a", "currency": "USD", "amount": 4, "date-declare": "2019-04-12", "date-invoice":"2019-04-12", "location": "x, y", "attachments": ["image1", "image2", "..."]}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
