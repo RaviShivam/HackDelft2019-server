@@ -1,6 +1,6 @@
-curl --request POST --data '{"category": "VOG", "currency": "EUR", "date-declare": "2019-02-12", "date-invoice": "2019-01-02"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
+curl --request POST --data '{"amount": 33.85, "category": "VOG", "currency": "EUR", "date-declare": "2019-02-12", "date-invoice": "2019-01-02"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
+curl --request POST --data '{"amount": 4.84, "category": "Parking", "currency": "USD", "date-declare": "2019-05-12", "date-invoice": "2019-03-18"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
 curl --request POST --data '{"amount": 5.36, "category": "Parking", "currency": "EUR", "date-declare": "2019-05-12", "date-invoice": "2019-04-12"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
 curl --request POST --data '{"amount": 30.33, "category": "Travelcosts", "currency": "EUR", "date-declare": "2019-05-12", "date-invoice": "2018-04-12"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
-curl --request POST --data '{"amount": 4.84, "category": "Parking", "currency": "USD", "date-declare": "2019-05-12", "date-invoice": "2019-03-18"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
 curl --request POST --data '{"amount": 25.2, "category": "Travelcosts", "currency": "USD", "date-declare": "2019-05-12", "date-invoice": "2018-03-18"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
 curl --request POST --data '{"amount": 405.25, "category": "Hotel", "currency": "USD", "date-declare": "2019-05-12", "date-invoice": "2019-03-19"}' http://34.90.127.27:5000/newsubmit -H "Content-Type:application/json"
